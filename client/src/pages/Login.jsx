@@ -7,6 +7,7 @@ import {
   signinFailure,
   signinStart,
 } from "../redux/user/userSlice";
+import GoogleOAuth from "../components/GoogleOAuth";
 
 export default function Login() {
   const [formData, setFormData] = useState({});
@@ -113,6 +114,7 @@ export default function Login() {
                 "Sign In"
               )}
             </Button>
+            <GoogleOAuth />
             <div className="flex gap-2 text-sm mt-5">
               <span className="">Don't have an account?</span>
               <Link to="/sign-up" className="text-blue-500">

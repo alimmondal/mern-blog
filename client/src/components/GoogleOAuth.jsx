@@ -32,7 +32,7 @@ const GoogleOAuth = () => {
       const data = await res.json();
 
       if (res.ok) {
-        dispatchEvent(signinSuccess(data));
+        dispatch(signinSuccess(data));
         navigate("/");
       }
     } catch (error) {

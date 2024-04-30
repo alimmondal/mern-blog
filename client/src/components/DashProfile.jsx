@@ -86,46 +86,6 @@ const DashProfile = () => {
   };
   // console.log(formData);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   setUpdateUserError(null);
-  //   setUpdateUserSuccess(null);
-
-  //   if (Object.keys(formData).length === 0) {
-  //     setUpdateUserError("No Changes made");
-  //     return;
-  //   }
-
-  //   if (imageFileUploading) {
-  //     setUpdateUserError("Please, wait for image to upload");
-  //     return;
-  //   }
-
-  //   try {
-  //     dispatch(updateStart());
-  //     const res = await fetch(`/api/user/update/${currentUser._id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     const data = res.json();
-
-  //     if (!res.ok) {
-  //       dispatch(updateFailure(data.message));
-  //       setUpdateUserError(data.message);
-  //     } else {
-  //       dispatch(updateSuccess(data));
-  //       setUpdateUserSuccess("User's profile update was successful");
-  //     }
-  //   } catch (error) {
-  //     dispatch(updateFailure(error.message));
-  //     setUpdateUserError(error.message);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -133,12 +93,12 @@ const DashProfile = () => {
     setUpdateUserSuccess(null);
 
     if (Object.keys(formData).length === 0) {
-      setUpdateUserError("No changes made");
+      setUpdateUserError("No Changes made");
       return;
     }
 
     if (imageFileUploading) {
-      setUpdateUserError("Please wait for image to upload");
+      setUpdateUserError("Please, wait for image to upload");
       return;
     }
 
@@ -159,7 +119,7 @@ const DashProfile = () => {
         setUpdateUserError(data.message);
       } else {
         dispatch(updateSuccess(data));
-        setUpdateUserSuccess("User's profile updated successfully");
+        setUpdateUserSuccess("User's profile update was successful");
       }
     } catch (error) {
       dispatch(updateFailure(error.message));

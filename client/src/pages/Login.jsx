@@ -81,6 +81,12 @@ export default function Login() {
 
         {/* right */}
         <div className="flex-1">
+          <div className="my-4">
+            <p className="">For Login</p>
+            <p className="">Admin: admin@gmail.com</p>
+            <p className="">User: user1@gmail.com</p>
+            <p className="">Password: 123456</p>
+          </div>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="">
               <Label value="Your email" />

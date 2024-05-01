@@ -2,9 +2,51 @@ import React, { useState } from "react";
 import { TextInput, Select, FileInput, Button } from "flowbite-react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { getStorage } from "firebase-storage";
+import { app } from "../firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const CreatePost = () => {
-  const [value, setValue] = useState("");
+  const [file, setFile] = useState(null);
+  const [imageUploadProgress, setImageUploadProgress] = useState(null);
+  const [imageUploadError, setImageUploadError] = useState(null);
+  const [formData, setFormData] = useState({});
+
+  const handleUploadImage = async (e) => {
+    try {
+      if (!file) {
+        setImageUploadError("Please select an image");
+        return;
+      }
+      setImageUploadError(null);
+
+      const storage = getStorage(app);
+      const fileName = new Date().getTime() + imageFile.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, imageFile);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setImageUploadProgress(progress.toFixed(0));
+        },
+        (error) => {
+          setImageUploadError("Image upload failed", error);
+          setImageUploadProgress(null);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImageUploadProgress(null);
+            setImageUploadError(null);
+            setFormData({ ...formData, image: downloadURL });
+          });
+        }
+      );
+    } catch (error) {
+      setImageUploadError(error);
+    }
+  };
 
   return (
     <div className="p-3 max-w-3xl min-h-screen mx-auto">
@@ -29,14 +71,19 @@ const CreatePost = () => {
           className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3
         "
         >
-          <FileInput type="file" accept="/*" />
+          <FileInput
+            type="file"
+            accept="/*"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
           <Button
             type="button"
             gradientDuoTone="purpleToBlue"
             size="sm"
             outline
+            onClick={handleUploadImage}
           >
-            Upload an image
+            Upload image
           </Button>
         </div>
         <div className="">
@@ -44,8 +91,6 @@ const CreatePost = () => {
             theme="snow"
             placeholder="Write something..."
             className="h-72 mb-6"
-            value={value}
-            onChange={setValue}
           />
           ;
         </div>

@@ -39,6 +39,7 @@ const DashPosts = () => {
         `/api/post/get-posts?userId=${currentUser._id}&startIndex=${startIndex}`
       );
       const data = await res.json();
+      // console.log("data", data);
 
       if (res.ok) {
         setUserPosts((prev) => [...prev, ...data.posts]);
@@ -67,7 +68,7 @@ const DashPosts = () => {
               </Table.HeadCell>
             </Table.Head>
             {userPosts.map((post) => (
-              <Table.Body className="divided-y">
+              <Table.Body key={post.title} className="divided-y">
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                   <Table.Cell>
                     {new Date(post.updatedAt).toLocaleDateString()}

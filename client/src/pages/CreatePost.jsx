@@ -110,7 +110,10 @@ const CreatePost = () => {
             <option value="uncategorized">Select a category</option>
             <option value="javascript">JavaScript</option>
             <option value="nextjs">Next.js</option>
-            <option value="reactjs">React.js</option>
+            <option value="reactjs">Express.js</option>
+            <option value="reactjs">Node.js</option>
+            <option value="reactjs">Web development</option>
+            <option value="reactjs">Open AI</option>
           </Select>
         </div>
         <div

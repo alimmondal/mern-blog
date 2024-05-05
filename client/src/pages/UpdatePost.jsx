@@ -30,6 +30,7 @@ export default function UpdatePost() {
       const fetchPost = async () => {
         const res = await fetch(`/api/post/get-posts?postId=${postId}`);
         const data = await res.json();
+
         if (!res.ok) {
           console.log(data.message);
           setPublishError(data.message);
@@ -98,11 +99,11 @@ export default function UpdatePost() {
         }
       );
       const data = await res.json();
+
       if (!res.ok) {
         setPublishError(data.message);
         return;
       }
-
       if (res.ok) {
         setPublishError(null);
         navigate(`/post/${data.slug}`);
@@ -138,6 +139,8 @@ export default function UpdatePost() {
             <option value="javascript">JavaScript</option>
             <option value="reactjs">React.js</option>
             <option value="nextjs">Next.js</option>
+            <option value="nextjs">Database</option>
+            <option value="nextjs">Development</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">

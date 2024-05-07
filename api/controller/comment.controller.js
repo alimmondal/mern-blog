@@ -32,6 +32,32 @@ export const getAllComments = async (req, res, next) => {
   }
 };
 
+// Update likes in comments
+export const likeComment = async (req, res, next) => {
+  
+  try {
+    const comment = await Comment.findById(req.params.commentId)
+    if (!comment) {
+        return next(errorHandler(404, 'Comment not found'));
+    }
+    
+    const userIndex = comment.likes.indexOf(req.user.id);
+
+    if (userIndex === -1) {
+      comment.numberOfLikes += 1;
+      comment.likes.push(req.user.id);
+    } else {
+      comment.numberOfLikes -= 1;
+      comment.likes.splice(userIndex, 1);
+    }
+
+    await comment.save()
+    res.status(200).json(comment);
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Delete a single post
 export const deleteComment = async (req, res, next) => {
   if (!req.user.isAdmin || req.user.id !== req.params.userId) {
@@ -45,7 +71,8 @@ export const deleteComment = async (req, res, next) => {
   }
 }
 
-// Update a single post
+
+
 export const updateComment = async (req, res, next) => {
   if (!req.user.isAdmin || req.user.id !== req.params.userId) {
     return next(errorHandler(403, 'You are not allowed to update this post'));

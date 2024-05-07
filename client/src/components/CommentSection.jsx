@@ -1,4 +1,4 @@
-import { Button, Textarea } from "flowbite-react";
+import { Alert, Button, Textarea } from "flowbite-react";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const CommentSection = ({ postId }) => {
   const { currentUser } = useSelector((state) => state.user);
   const [comment, setComment] = useState("");
+  const [commentError, setCommentError] = useState(null);
 
   // console.log(comment);
 
@@ -14,22 +15,26 @@ const CommentSection = ({ postId }) => {
     if (comment.length > 200) {
       return;
     }
+    try {
+      const res = await fetch("/api/comment/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: comment,
+          postId: postId,
+          userId: currentUser._id,
+        }),
+      });
+      const data = await res.json();
 
-    const res = await fetch("/api/comment/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        content: comment,
-        postId: postId,
-        userId: currentUser._id,
-      }),
-    });
-    const data = await res.json();
-
-    if (res.ok) {
-      setComment("");
+      if (res.ok) {
+        setComment("");
+        setCommentError(null);
+      }
+    } catch (error) {
+      setCommentError(error.message);
     }
   };
 
@@ -78,6 +83,11 @@ const CommentSection = ({ postId }) => {
               Submit
             </Button>
           </div>
+          {commentError && (
+            <Alert color="failure" className="mt-5">
+              {commentError}
+            </Alert>
+          )}
         </form>
       )}
     </div>

@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/create', verifyToken, createComment);
 
-router.get('/get-comment', verifyToken, getAllComments);
+router.get('/get-comments/:postId', verifyToken, getAllComments);
 
 router.delete('/delete-comment/:commentId/:userId', verifyToken, deleteComment);
 

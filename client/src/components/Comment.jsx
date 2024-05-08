@@ -39,9 +39,10 @@ const Comment = ({ comment, onLike, onEdit }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ content: editedContent }),
+        body: JSON.stringify({
+          content: editedContent,
+        }),
       });
-      const data = await res.json();
 
       if (res.ok) {
         setIsEditing(false);

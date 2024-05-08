@@ -1,7 +1,7 @@
 import express from 'express';
 import { verifyToken } from '../utils/verifyUser.js';
-import { createPost, deletePost, getAllPosts, updatePost } from '../controller/post.controller.js';
-import { createComment, deleteComment, editComment, getAllComments, likeComment, updateComment } from '../controller/comment.controller.js';
+
+import { createComment, deleteComment, editComment, getAllComments, likeComment } from '../controller/comment.controller.js';
 
 const router = express.Router();
 

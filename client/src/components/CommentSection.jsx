@@ -68,9 +68,9 @@ const CommentSection = ({ postId }) => {
       const res = await fetch(`/api/comment/likeComment/${commentId}`, {
         method: "PUT",
       });
+      const data = await res.json();
 
       if (res.ok) {
-        const data = await res.json();
         setComments(
           comments.map((comment) =>
             comment._id === commentId

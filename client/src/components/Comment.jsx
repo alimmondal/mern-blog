@@ -44,7 +44,9 @@ const Comment = ({ comment, onLike }) => {
         </div>
         <p className="text-gray-500 pb-2">{comment.content}</p>
 
+        {/* Like  */}
         <div className="flex items-center pt-2 text-xs border-t dark:border-gray-300 max-w-fit gap-2">
+          {/* Like icon */}
           <button
             type="button"
             onClick={() => onLike(comment._id)}
@@ -58,12 +60,24 @@ const Comment = ({ comment, onLike }) => {
             <FaThumbsUp className="text-md" />
           </button>
 
+          {/* Like amount amd Text */}
           <p className="">
             {comment.numberOfLikes > 0 &&
               comment.numberOfLikes +
                 " " +
                 (comment.numberOfLikes === 1 ? "like" : "likes")}
           </p>
+
+          {/* comment Edit button */}
+          {currentUser &&
+            (currentUser._id === comment.userId || currentUser.isAdmin) && (
+              <button
+                type="button"
+                className="text-gray-400 hover:text-blue-500"
+              >
+                Edit
+              </button>
+            )}
         </div>
       </div>
     </div>

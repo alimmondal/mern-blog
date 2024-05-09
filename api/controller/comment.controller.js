@@ -87,14 +87,20 @@ export const editComment = async (req, res, next) => {
   }
 };
 
-// Delete a single post
+// Delete a single comment
 export const deleteComment = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-    return next(errorHandler(403, 'You are not allowed to delete this post'));
-  }
   try {
-    await Post.findByIdAndDelete(req.params.postId);
-    res.status(200).json('The post has been deleted');
+    const comment = await Comment.findById(req.params.commentId)
+    if (!comment) {
+      return next(errorHandler(404, 'Comment not found'));
+     }
+    
+    if (comment.userId !== req.user.id || !req.user.isAdmin) {
+      return next(errorHandler(403, 'You are not allowed to edit'));
+    }
+    
+    await Comment.findByIdAndDelete(req.params.commentId);
+    res.status(200).json('The comment has been deleted');
   } catch (error) {
     next(error);
   }

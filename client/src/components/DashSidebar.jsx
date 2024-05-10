@@ -65,7 +65,7 @@ const DashSidebar = () => {
                 <Sidebar.Item
                   active={tab === "posts"}
                   icon={HiDocumentText}
-                  label={"post"}
+                  // label={"post"}
                   labelColor="dark"
                   as="div"
                 >
@@ -76,11 +76,22 @@ const DashSidebar = () => {
                 <Sidebar.Item
                   active={tab === "users"}
                   icon={HiOutlineUserGroup}
-                  label={"Users"}
+                  // label={"Users"}
                   labelColor="dark"
                   as="div"
                 >
                   Users
+                </Sidebar.Item>
+              </Link>
+              <Link to="/dashboard?tab=comments">
+                <Sidebar.Item
+                  active={tab === "comments"}
+                  icon={HiOutlineUserGroup}
+                  // label={"Users"}
+                  labelColor="dark"
+                  as="div"
+                >
+                  Comments
                 </Sidebar.Item>
               </Link>
             </>

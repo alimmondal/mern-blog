@@ -21,7 +21,7 @@ export const createComment = async (req, res, next) => {
 };
 
   // Get all comments
-export const getAllComments = async (req, res, next) => {
+export const getSinglePostComments = async (req, res, next) => {
   try {
   
     const comments = await Comment.find({ postId: req.params.postId}).sort({ createdAt: -1 })
@@ -106,3 +106,33 @@ export const deleteComment = async (req, res, next) => {
   }
 }
 
+export const getAllComments = async (req, res, next) => {
+  try {
+  if (!req.user.isAdmin) {
+      return next(errorHandler(403, 'You are not allowed to get comments'));
+    }
+
+    const startIndex = parseInt(req.params.startIndex, 0);
+    const limit = parseInt(req.params.limit, 5);
+    const sortDirection = req.params.sort === 'desc' ? -1 : 1;
+
+    const comments = await Comment.find()
+      .sort({ createdAt: sortDirection })
+      .skip(startIndex)
+      .limit(limit);
+    
+    const totalComments = await Comment.countDocuments();
+    const now = new Date();
+    const oneMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+
+    const lastMothComments = await Comment.countDocuments({ createdAt: { $gte: oneMonthAgo } })
+    
+    res.status(200).json({
+      comments,
+      totalComments,
+      lastMothComments,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

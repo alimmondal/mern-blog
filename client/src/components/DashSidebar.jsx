@@ -1,6 +1,7 @@
 import { Sidebar } from "flowbite-react";
 import { useEffect, useState } from "react";
 import {
+  HiAnnotation,
   HiArrowSmRight,
   HiDocumentText,
   HiOutlineUserGroup,
@@ -61,6 +62,17 @@ const DashSidebar = () => {
 
           {currentUser.isAdmin && (
             <>
+              <Link to="/dashboard?tab=dashboard">
+                <Sidebar.Item
+                  active={tab === "dashboard" || !tab}
+                  icon={HiAnnotation}
+                  // label={"Users"}
+                  labelColor="dark"
+                  as="div"
+                >
+                  Dashboard
+                </Sidebar.Item>
+              </Link>
               <Link to="/dashboard?tab=posts">
                 <Sidebar.Item
                   active={tab === "posts"}
@@ -86,7 +98,7 @@ const DashSidebar = () => {
               <Link to="/dashboard?tab=comments">
                 <Sidebar.Item
                   active={tab === "comments"}
-                  icon={HiOutlineUserGroup}
+                  icon={HiAnnotation}
                   // label={"Users"}
                   labelColor="dark"
                   as="div"

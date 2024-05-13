@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CallToAction from "../components/CallToAction";
 import PostCard from "../components/PostCard";
+import car from "../../public/js2.png";
+
 export default function Home() {
   const [posts, setPosts] = useState([]);
 
@@ -15,51 +17,33 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl sm:h-[600px] mx-auto flex flex-col-reverse sm:flex-row items-center justify-between gap-4 p-2 overflow-hidden my-4">
-        <div className="flex flex-col gap-6">
-          <h1 className="text-xl font-bold lg:text-6xl">Welcome to my Blog</h1>
-          <p className="text-gray-500 text-xs sm:text-sm max-w-lg">
-            Here you'll find a variety of articles and tutorials on topics such
-            as web development, software engineering, and programming languages.
-          </p>
-          <Link
-            to={"/search"}
-            className="text-xs sm:text-sm text-teal-500 font-bold hover:underline"
-          >
-            View all posts
-          </Link>
-        </div>
-
-        <div className="">
-          <span className="">
-            <img
-              src="/nodejs.jpg"
-              alt=""
-              className="w-[526px] h-44 sm:h-48 object-cover "
-            />
-          </span>
-          <div className="flex gap-2 mt-3">
-            <span className="">
-              <img
-                src="/nodejs.jpg"
-                alt=""
-                className="w-[260px] h-44 object-cover"
-              />
-            </span>
-            <span className="">
-              <img
-                src="/nodejs.jpg"
-                alt=""
-                className="w-[260px] h-44 object-cover"
-              />
-            </span>
-          </div>
-        </div>
+    <div className="">
+      <div
+        style={{
+          backgroundImage: `url(${car})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="flex flex-col w-full gap-6 p-28 mx-auto"
+      >
+        {/* <div className="absolute inset-0 bg-black opacity-70"></div> */}
+        <h1 className="text-gray-400 dark:text-white text-3xl font-bold lg:text-6xl">
+          Welcome to my Blog
+        </h1>
+        <p className="text-gray-500 text-xs sm:text-sm w-1/2">
+          Here you'll find a variety of articles and tutorials on topics such as
+          web development, software engineering, and programming languages.
+        </p>
+        <Link
+          to="/search"
+          className="text-xs sm:text-sm text-teal-500 font-bold hover:underline"
+        >
+          View all posts
+        </Link>
       </div>
 
       {/* Call to action */}
-      <div className="p-3 bg-amber-100 dark:bg-slate-700">
+      <div className="mt-28 p-3 bg-amber-100 dark:bg-slate-700">
         <CallToAction />
       </div>
 
@@ -77,7 +61,7 @@ export default function Home() {
             </div>
             <Link
               to={"/search"}
-              className="text-lg text-teal-500 hover:underline text-center"
+              className="text-center text-lg text-teal-500 hover:underline"
             >
               View all posts
             </Link>

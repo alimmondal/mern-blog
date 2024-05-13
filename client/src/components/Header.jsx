@@ -55,7 +55,7 @@ const Header = () => {
   };
 
   return (
-    <Navbar className="border-b-2 ">
+    <Navbar className="border-b-2 fixed top-0 right-0 left-0 z-50">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:to-white"

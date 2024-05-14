@@ -18,28 +18,34 @@ export default function Home() {
 
   return (
     <div className="">
-      <div
-        style={{
-          backgroundImage: `url(${car})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="flex flex-col w-full  gap-8 h-[400px] p-5 sm:p-28 mx-auto mt-[60px]"
-      >
-        {/* <div className="absolute inset-0 bg-black opacity-70"></div> */}
-        <h1 className="text-gray-400 dark:text-white text-3xl font-bold lg:text-6xl">
-          Welcome to my Blog
-        </h1>
-        <p className="text-gray-500 text-xs sm:text-sm w-1/2">
-          Here you'll find a variety of articles and tutorials on topics such as
-          web development, software engineering, and programming languages.
-        </p>
-        <Link
-          to="/search"
-          className="text-xs sm:text-sm text-teal-500 font-bold hover:underline"
+      <div className="w-full h-[500px] sm:h-[400px] flex-col-reverse flex sm:flex-row items-center bg-gradient-to-l from-indigo-500 via-purple-500 to-pink-500 mt-16 p-5 sm:p-28">
+        <div
+          // style={{
+          //   backgroundImage: `url(${car})`,
+          //   backgroundSize: "cover",
+          //   backgroundPosition: "center",
+          // }}
+          className="flex flex-col gap-4"
         >
-          View all posts
-        </Link>
+          {/* <div className="absolute inset-0 bg-black opacity-70"></div> */}
+          <h1 className="text-gray-800 dark:text-white text-3xl font-bold lg:text-6xl">
+            Welcome to my tech Blog
+          </h1>
+          <p className="text-gray-300 text-xs sm:text-sm">
+            Here you'll find a variety of articles and tutorials on topics such
+            as web development, software engineering, and programming languages.
+          </p>
+          <Link
+            to="/search"
+            className="text-xs sm:text-sm text-teal-300 font-bold hover:underline hover:text-white"
+          >
+            View all posts
+          </Link>
+        </div>
+
+        <div className="">
+          <img src="/js7.png" alt="" className="object-cover" />
+        </div>
       </div>
 
       {/* Call to action */}

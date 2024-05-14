@@ -139,8 +139,8 @@ export default function UpdatePost() {
             <option value="javascript">JavaScript</option>
             <option value="reactjs">React.js</option>
             <option value="nextjs">Next.js</option>
-            <option value="nextjs">Database</option>
-            <option value="nextjs">Development</option>
+            <option value="database">Database</option>
+            <option value="development">Development</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">

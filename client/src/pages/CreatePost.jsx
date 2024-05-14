@@ -88,7 +88,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="p-3 max-w-3xl min-h-screen mx-auto">
+    <div className="p-3 max-w-3xl min-h-screen mx-auto mt-16">
       <h1 className="text-center text-3xl my-7 font-semibold">Create A Post</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 sm:flex-row justify-between">

@@ -25,10 +25,10 @@ export default function Home() {
           //   backgroundSize: "cover",
           //   backgroundPosition: "center",
           // }}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 sm:ml-20"
         >
           {/* <div className="absolute inset-0 bg-black opacity-70"></div> */}
-          <h1 className="text-gray-800 dark:text-white text-3xl font-bold lg:text-6xl">
+          <h1 className="text-gray-300 dark:text-white text-3xl font-bold lg:text-6xl ">
             Welcome to my tech Blog
           </h1>
           <p className="text-gray-300 text-xs sm:text-sm">

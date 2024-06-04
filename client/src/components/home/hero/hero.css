@@ -2,6 +2,7 @@
   margin: 30px 0;
   color: #fff;
 }
+
 .hero1 a {
   color: #fff;
 }
@@ -16,7 +17,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: auto;
 }
 .hero1 .container {
   display: grid;
@@ -60,6 +61,7 @@
 .hero1 .text {
   position: absolute;
   bottom: 30px;
+  /* color: green; */
 }
 .hero1 .box:nth-child(1) h1 {
   font-size: 28px;

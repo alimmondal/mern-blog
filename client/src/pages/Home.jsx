@@ -8,16 +8,17 @@ import Homes from "../components/home/mainContent/homes/Home";
 import Discover from "../components/home/discover/Discover";
 
 export default function Home() {
-  // const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     const res = await fetch("/api/post/get-posts");
-  //     const data = await res.json();
-  //     setPosts(data.posts);
-  //   };
-  //   fetchPosts();
-  // }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await fetch("/api/post/get-posts");
+      const data = await res.json();
+      setPosts(data.posts);
+    };
+    fetchPosts();
+  }, []);
+  console.log(posts);
 
   const [topNews, setTopNews] = useState([]);
 
@@ -40,19 +41,19 @@ export default function Home() {
   };
 
   const filteredArticles = removeDuplicates();
-  console.log(filteredArticles);
+  // console.log(filteredArticles);
 
   return (
     <div className="h-full overflow-hidden mt-16">
-      <Hero items={filteredArticles} />
+      <Hero items={posts} />
       <Homes />
       <Discover />
     </div>
   );
 }
 
-{
-  /* <div className="">
+// {
+/* <div className="">
   <div className="w-full h-[500px] sm:h-[400px] flex-col-reverse flex sm:flex-row items-center bg-gradient-to-l from-indigo-500 via-purple-500 to-pink-500 mt-16 p-5 sm:p-28">
     <div
       className="flex flex-col gap-4 sm:ml-20"
@@ -103,4 +104,4 @@ export default function Home() {
     <CallToAction />
   </div>
 </div>; */
-}
+// }

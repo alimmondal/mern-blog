@@ -1,18 +1,16 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+// import React, { useState } from "react";
 import "./hero.css";
 import Card from "./Card";
-import { hero } from "../../../../dummyData";
 
-const Hero = () => {
-  const [items, setIems] = useState(hero);
+const Hero = ({ items }) => {
+  // const [items, setIems] = useState(hero);
 
   return (
     <>
       <section className="hero1 overflow-hidden">
         <div className="container">
-          {items.map((item, index) => (
+          {items.slice(0, 4).map((item, index) => (
             <Card key={index} item={item} />
           ))}
         </div>

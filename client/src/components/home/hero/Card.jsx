@@ -1,22 +1,25 @@
 /* eslint-disable react/prop-types */
 
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Card = ({ item: { urlToImage, source, title, author, publishedAt } }) => {
+const Card = ({
+  item: { id, image, title, author, createdAt, category, slug },
+}) => {
+  // console.log(image);
   return (
     <>
-      <div key={source?.id} className="box">
-        <div className="img">
-          <img src={urlToImage} alt="" />
+      <div key={id} className="box">
+        <div className="">
+          <img src={image} alt="" />
         </div>
         <div className="text">
-          <span className="category">{source?.name}</span>
-          {/* <Link to={`/SinglePage/${id}`}> */}
-          <h1 className="titleBg">{title}</h1>
-          {/* </Link> */}
+          <span className="category">{category}</span>
+          <Link to={`/post/${slug}`}>
+            <h1 className="titleBg font-bold">{title}</h1>
+          </Link>
           <div className="author flex">
-            <span>by {author}</span>
-            <span>{publishedAt}</span>
+            <span>by {author || "alim"}</span>
+            <span>{new Date(createdAt).toLocaleDateString()}</span>
           </div>
         </div>
       </div>

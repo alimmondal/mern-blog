@@ -1,8 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CallToAction from "../components/CallToAction";
 import PostCard from "../components/PostCard";
-import car from "../../public/js2.png";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -32,8 +32,9 @@ export default function Home() {
             Welcome to my tech Blog
           </h1>
           <p className="text-gray-300 text-xs sm:text-sm">
-            Here you'll find a variety of articles and tutorials on topics such
-            as web development, software engineering, and programming languages.
+            Here you&apos;ll find a variety of articles and tutorials on topics
+            such as web development, software engineering, and programming
+            languages.
           </p>
           <Link
             to="/search"

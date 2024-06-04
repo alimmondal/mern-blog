@@ -92,7 +92,7 @@ const SinglePage = () => {
                 <span>by</span>
                 <img src={post?.authorImg || author} alt="" />
                 <p> {post?.authorName || "alim"} on</p>
-                <label>{new Date(post?.createdAt).toLocaleDateString()}</label>
+                <label>{new Date(post?.updatedAt).toLocaleDateString()}</label>
               </div>
 
               <div className="social">

@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 
 const Card = ({
-  item: { id, image, title, author, createdAt, category, slug },
+  item: { id, image, title, author, updatedAt, category, slug },
 }) => {
   // console.log(image);
   return (
@@ -19,7 +19,7 @@ const Card = ({
           </Link>
           <div className="author flex">
             <span>by {author || "alim"}</span>
-            <span>{new Date(createdAt).toLocaleDateString()}</span>
+            <span>{new Date(updatedAt).toLocaleDateString()}</span>
           </div>
         </div>
       </div>

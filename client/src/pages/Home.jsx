@@ -1,8 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import CallToAction from "../components/CallToAction";
-import PostCard from "../components/PostCard";
 import Hero from "../components/home/hero/Hero";
 import Homes from "../components/home/mainContent/homes/Home";
 import Discover from "../components/home/discover/Discover";

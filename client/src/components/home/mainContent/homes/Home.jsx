@@ -33,12 +33,24 @@ const Homes = () => {
   const filteredArticles = removeDuplicates();
   // console.log(filteredArticles);
 
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await fetch("/api/post/get-posts");
+      const data = await res.json();
+      setPosts(data.posts);
+    };
+    fetchPosts();
+  }, []);
+  console.log(posts);
+
   return (
     <>
       <main>
         <div className="container overflow-hidden">
           <section className="mainContent">
-            <Popular popular={filteredArticles} />
+            <Popular popular={posts} />
             <Ppost />
             <Life />
             <Music />

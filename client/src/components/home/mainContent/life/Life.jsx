@@ -43,8 +43,10 @@ const Life = () => {
                       </div>
                     </div>
                     <div className="text">
-                      <h1 className="title">{val.title.slice(0, 40)}...</h1>
-                      <div className="date">
+                      <h1 className="title line-clamp-1">
+                        {val.title.slice(0, 40)}...
+                      </h1>
+                      <div className="date flex items-center gap-3">
                         <FaCalendarDay size={24} />
                         <label>{val.date}</label>
                       </div>

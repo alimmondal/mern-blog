@@ -1,8 +1,9 @@
-import React from "react";
+// import React from "react";
 import Slider from "react-slick";
 
 import "./style.css";
-import { popular } from "../../../../../dummyData copy";
+import { popular } from "../../../../dummyData";
+// import { popular } from "../../../../../dummyData copy";
 
 // same code of popular and change some part
 const SinglePageSlider = () => {
@@ -25,7 +26,7 @@ const SinglePageSlider = () => {
   };
   return (
     <>
-      <section className="singlePopular">
+      <section className="singlePopular pt-16">
         <div className="content">
           <Slider {...settings}>
             {popular.map((val) => {

@@ -34,7 +34,7 @@ const Ppost = () => {
                     </div>
                     <div className="text">
                       <h1 className="title">{val.title.slice(0, 40)}...</h1>
-                      <div className="date">
+                      <div className="date flex items-center gap-2">
                         <FaCalendarDay size={24} />
                         <label>{val.date}</label>
                       </div>

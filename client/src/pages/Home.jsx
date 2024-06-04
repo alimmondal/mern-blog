@@ -5,23 +5,48 @@ import CallToAction from "../components/CallToAction";
 import PostCard from "../components/PostCard";
 import Hero from "../components/home/hero/Hero";
 import Homes from "../components/home/mainContent/homes/Home";
+import Discover from "../components/home/discover/Discover";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const res = await fetch("/api/post/get-posts");
+  //     const data = await res.json();
+  //     setPosts(data.posts);
+  //   };
+  //   fetchPosts();
+  // }, []);
+
+  const [topNews, setTopNews] = useState([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await fetch("/api/post/get-posts");
-      const data = await res.json();
-      setPosts(data.posts);
-    };
-    fetchPosts();
+    const apiKey = "8f32b7d45db04cc2bab08310586753dd";
+
+    fetch(`https://newsapi.org/v2/top-headlines?country=US&apikey=${apiKey}`)
+      .then((res) => res.json())
+      .then((data) => setTopNews(data))
+      .catch((error) => console.error("Error fetching top headlines:", error));
   }, []);
 
+  const randomArticles = topNews?.articles;
+
+  const removeDuplicates = () => {
+    if (!randomArticles) return [];
+    return randomArticles.filter(
+      (article) => article?.source.id !== null && article?.urlToImage !== null
+    );
+  };
+
+  const filteredArticles = removeDuplicates();
+  // console.log(filteredArticles);
+
   return (
-    <div className="">
-      {/* <Hero /> */}
+    <div className="h-full overflow-hidden mt-16">
+      <Hero items={filteredArticles} />
       <Homes />
+      <Discover />
     </div>
   );
 }

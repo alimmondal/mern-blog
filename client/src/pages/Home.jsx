@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   const filteredArticles = removeDuplicates();
-  // console.log(filteredArticles);
+  console.log(filteredArticles);
 
   return (
     <div className="h-full overflow-hidden mt-16">

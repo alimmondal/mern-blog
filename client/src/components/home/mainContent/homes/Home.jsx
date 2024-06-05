@@ -8,29 +8,29 @@ import Ppost from "../Ppost/Ppost";
 import "./style.css";
 
 const Homes = () => {
-  const [topNews, setTopNews] = useState([]);
+  // const [topNews, setTopNews] = useState([]);
 
-  useEffect(() => {
-    const apiKey = "8f32b7d45db04cc2bab08310586753dd";
+  // useEffect(() => {
+  //   const apiKey = "8f32b7d45db04cc2bab08310586753dd";
 
-    fetch(`https://newsapi.org/v2/top-headlines?country=US&apikey=${apiKey}`)
-      .then((res) => res.json())
-      .then((data) => setTopNews(data))
-      .catch((error) => console.error("Error fetching top headlines:", error));
-  }, []);
+  //   fetch(`https://newsapi.org/v2/top-headlines?country=US&apikey=${apiKey}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setTopNews(data))
+  //     .catch((error) => console.error("Error fetching top headlines:", error));
+  // }, []);
   // console.log(topNews);
 
-  const randomArticles = topNews?.articles;
+  // const randomArticles = topNews?.articles;
   // console.log(randomArticles);
 
-  const removeDuplicates = () => {
-    if (!randomArticles) return [];
-    return randomArticles.filter(
-      (article) => article?.source.id !== null && article?.urlToImage !== null
-    );
-  };
+  // const removeDuplicates = () => {
+  //   if (!randomArticles) return [];
+  //   return randomArticles.filter(
+  //     (article) => article?.source.id !== null && article?.urlToImage !== null
+  //   );
+  // };
 
-  const filteredArticles = removeDuplicates();
+  // const filteredArticles = removeDuplicates();
   // console.log(filteredArticles);
 
   const [posts, setPosts] = useState([]);
@@ -43,7 +43,7 @@ const Homes = () => {
     };
     fetchPosts();
   }, []);
-  console.log(posts);
+  // console.log(posts);
 
   return (
     <>

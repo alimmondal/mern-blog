@@ -107,7 +107,7 @@ export default function UpdatePost() {
       }
       if (res.ok) {
         setPublishError(null);
-        navigate(`/post/${data.slug}`);
+        navigate(`/dashboard?tab=posts`);
       }
     } catch (error) {
       setPublishError("Something went wrong");

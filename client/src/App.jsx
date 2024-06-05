@@ -6,7 +6,7 @@ import Projects from "./pages/Projects";
 import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header";
 import Login from "./pages/Login";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
 import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
@@ -15,6 +15,7 @@ import UpdatePost from "./pages/UpdatePost";
 import ScrollToTop from "./components/ScrollToTop";
 import Search from "./pages/Search";
 import SinglePage from "./components/singlePage/SinglePage";
+import Footer from "./components/common/footer/Footer";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/post/:postSlug" element={<SinglePage />} />
         {/* <Route path="/post/:postSlug" element={<PostPage />} /> */}
       </Routes>
+      {/* <Footer /> */}
       <Footer />
     </BrowserRouter>
   );

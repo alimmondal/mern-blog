@@ -38,12 +38,12 @@ const Popular = ({ popular }) => {
         <Heading title="Popular" />
         <div className="content">
           <Slider {...settings}>
-            {popular.map((val) => {
+            {popular.map((val, index) => {
               return (
-                <div key={val?.id} className="items">
+                <div key={index} className="items ">
                   <Link to={`/post/${val?.slug}`}>
-                    <div className="box shadow">
-                      <div className="images row">
+                    <div className="box shadow dark:border dark:rounded-sm dark:border-green-500">
+                      <div className="images row ">
                         <div className="img">
                           <img src={val.image} alt="" />
                         </div>
@@ -51,17 +51,19 @@ const Popular = ({ popular }) => {
                           <span>{val?.category}</span>
                         </div>
                       </div>
-                      <div className="text row">
+                      <div className="text row dark:text-slate-300 dark:bg-slate-600">
                         <h1 className="title">{val.title.slice(0, 40)}...</h1>
                         <div className="date flex gap-3">
                           <FaCalendarDay size={24} />
-                          <label>
+                          <label className="dark:text-slate-300">
                             {new Date(val.updatedAt).toLocaleDateString()}
                           </label>
                         </div>
                         <div className="comment">
                           <FaComment size={24} />
-                          <label>{val?.comment || "comment"}</label>
+                          <label className="dark:text-slate-300">
+                            {val?.comment || "comment"}
+                          </label>
                         </div>
                       </div>
                     </div>

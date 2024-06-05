@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "./footer.css";
 
 const Footer = () => {
@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="container flexSB">
           <p>© all rights reserved</p>
           <p>
-            made with <i className="fa fa-heart"></i> by M.A. Alim
+            made <i className="fa fa-heart"></i> by M.A. Alim
           </p>
         </div>
       </div>
